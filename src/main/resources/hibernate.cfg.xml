@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+
+        <!-- Configurações de conexão com o Banco de Dados -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://127.0.0.1:3306/drogaria</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">103549</property>
+
+        <!-- Pool de conexões -->
+        <property name="connection.pool_size">1</property>
+
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+
+        <!-- Gerenciamento do contexto das sessões -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- Cache de Segundo Nível  -->
+        <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+
+        <!-- Mostra Sqls Geradas -->
+        <property name="show_sql">true</property>
+
+        <!-- Cria tabelas do Banco de Dados -->
+        <!--  <property name="hbm2ddl.auto">create</property> // esse aqui é o que era-->
+        <property name="hbm2ddl.auto">validate</property> <!-- esse compara o que vc tem no banco com o que vc criou no java atravées do hibernate -->
+        
+        <!-- Mapeamento das Entidades / mapear entidades para o hibernate poder gerar a tabela automaticamente no SQL-->
+		<mapping class="br.com.endrio.drogaria.domain.Cidade"/>
+		<mapping class="br.com.endrio.drogaria.domain.Cliente"/>
+		<mapping class="br.com.endrio.drogaria.domain.Estado"/>
+		<mapping class="br.com.endrio.drogaria.domain.Fabricante"/>
+		<mapping class="br.com.endrio.drogaria.domain.Funcionario"/>
+		<mapping class="br.com.endrio.drogaria.domain.ItemVenda"/>
+		<mapping class="br.com.endrio.drogaria.domain.Pessoa"/>
+		<mapping class="br.com.endrio.drogaria.domain.Produto"/>
+		<mapping class="br.com.endrio.drogaria.domain.Usuario"/>
+		<mapping class="br.com.endrio.drogaria.domain.Venda"/>
+		
+        
+
+    </session-factory>
+
+</hibernate-configuration>
