@@ -12,7 +12,7 @@ public class Cidade extends GenericDomain {
 	private String nome;
 	@ManyToOne // relação de cidades e estados. Um Estado contém várias cidades,
 				// uma cidade só pode estar atrelada a um estado.
-	@JoinColumn(nullable = false) // personalizar as propeiedades de colunas
+	@JoinColumn(nullable = false) // personalizar as propriedades de colunas
 									// estrangeiras
 	private Estado estado;// chave estrangeira
 

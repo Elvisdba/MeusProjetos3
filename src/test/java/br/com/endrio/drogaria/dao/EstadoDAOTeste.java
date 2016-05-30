@@ -12,11 +12,12 @@ public class EstadoDAOTeste {
 	@Ignore//ignorar o resultado e não vai salvar
 	public void salvar(){
 		Estado estado = new Estado();
-		estado.setNome("Distrito Federal");
-		estado.setSigla("DF");
+		estado.setNome("Goiás");
+		estado.setSigla("GO");
 		
 		EstadoDAO estadoDAO = new EstadoDAO();
 		estadoDAO.salvar(estado);
+		System.out.println("Estado Salvo!");
 	}
 	
 	@Test
@@ -64,8 +65,9 @@ public class EstadoDAOTeste {
 		
 	}
 	@Test
+	@Ignore
 	public void editar(){
-		Long codigo = 6L; //6L: esse "L" é pra mostrar que é long e não int por exemplo
+		Long codigo = 2L; //6L: esse "L" é pra mostrar que é long e não int por exemplo
 		  //o "2" é o código que eu quero buscar
 		EstadoDAO estadoDAO = new EstadoDAO();
 		Estado estado = estadoDAO.buscar(codigo);
@@ -73,8 +75,8 @@ public class EstadoDAOTeste {
 			System.out.println("Nenhum registro encontrado.");
 		} else{
 			System.out.println(estado.getCodigo()+"-"+estado.getNome()+"-"+estado.getSigla());
-			estado.setNome("Esprito Santo");
-			estado.setSigla("ES");
+			//estado.setNome("Espírito Santo");
+			estado.setSigla("DF");
 			estadoDAO.editar(estado);
 			System.out.println(estado.getCodigo()+"-"+estado.getNome()+"-"+estado.getSigla());
 			System.out.println("Dados Modificados.");
