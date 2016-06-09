@@ -12,13 +12,16 @@ import javax.persistence.ManyToOne;
 public class Produto extends GenericDomain {
 	@Column(length = 80, nullable = false)
 	private String descricao;
+	
 	@Column(nullable = false) // o tamanho dele já é definido pelo tipo
 	private Short quantidade;
+	
 	@Column(nullable = false, precision = 6, scale = 2) // 6 dígitos antes da
 														// vírgula (reais) e 2
 														// depois da vírgula
 														// (centavos).
 	private BigDecimal preco;
+	
 	@ManyToOne
 	@JoinColumn(nullable = false)
 	private Fabricante fabricante;

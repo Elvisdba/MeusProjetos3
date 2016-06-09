@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- Bibliotecas / h: e f: são do JSF e p: é do PrimeFaces-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Cidades</title>
+</h:head>
+<h:body>
+	<!-- h:form : comando de formulário -->
+	<h:form>
+		<!-- p:panel é uma área onde fica a barra de título -->
+		<p:panel header="Cidades-listagem">
+			<!-- p:dataTable: Criar tabela -->
+			<p:dataTable emptyMessage="Nenhum registro encontrado."
+				paginator="true">
+				<!-- f:facet name="header" : alteração na barra em cima da tabela -->
+				<f:facet name="header">
+					<!-- p:commandButton : cria um botão "Novo" / oncomplete : significa que o botão vai
+					 executar uma ação ao ser apertado / PF('dialogo').show(); : significa que ele
+					 vai chamar a janela de ponto flutuante em p:dialog -->
+					<p:commandButton value="Novo" oncomplete="PF('dialogo').show();" />
+				</f:facet>
+				<!-- p:collum cria colunas -->
+				<p:column headerText="Nome">
+				</p:column>
+				<p:column headerText="Estado">
+				</p:column>
+				<p:column headerText="Opções">
+				</p:column>
+			</p:dataTable>
+		</p:panel>
+	</h:form>
+	<!-- Janela flutuante  / widgetVar : nome de referência da janela / 
+	draggable="false" e resizable="false" : não deixa que o usuário arraste 
+	e redimensione a janela / modal="true" : não deixa o usuário clicar nos
+	botões de plano de fundo-->
+	<p:dialog header="Cidades - Cadastro" widgetVar="dialogo"
+		draggable="false" resizable="false" modal="true">
+		<h:form>
+		<!-- painelGrid : matriz em que vai colocar x valor por coluna -->
+		<!-- outputlabel: vai add rótulos dentro da janela
+				inputText : vai colocar uma caixa para ser preenchida pelo usuário -->
+		<!-- maxlenght : nº máx de caracteres a ser colocado /
+				size : tamanho da cx de texto -->
+		<!-- selecOneMenu (acesso a chave estrangeira) : cx de diálogo onde vai disponibilizar
+		os estados disponíveis no banco de dados / 
+		filter="true" : deixa uma caixa de pesquisa para o usuário
+		já ir digitando o começo do nome do dado em caso de muitos dados pra ele não 
+		ficar procurando /itemValue : é o que é gravado no banco / itemLabel : é o q 
+		aparece para o usuário-->		
+			<h:panelGrid columns="2">
+				
+				<p:outputLabel value="Nome: " />
+				
+				<p:inputText maxlength="50" size="30" />
+
+				<p:outputLabel value="Estado: " />
+				<p:selectOneMenu filter="true">
+					<f:selectItem itemValue="" itemLabel="Selecione um Estado"/>
+				</p:selectOneMenu>
+				
+			</h:panelGrid>
+			<h:panelGrid columns="2">
+				<p:commandButton value="Salvar" />
+				<p:commandButton value="Fechar" oncomplete="PF('dialogo').hide();"/>
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
+
+</h:body>
+</html>
